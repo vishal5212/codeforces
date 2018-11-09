@@ -19,6 +19,10 @@ int comparator(const void *p, const void *q)
 
 
 /* little bit about structure*/
+/*why this one doesn't work?*/
+/*why this one doesn't work?*/
+/*why this one doesn't work?*/
+
 #include<stdio.h>
 #include<stdlib.h>
 
