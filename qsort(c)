@@ -1,0 +1,94 @@
+function prototype:
+
+void qsort (void* base, size_t num, size_t size, int (*comparator)(const void*,const void*)); 
+
+for example:
+struct Student 
+{ 
+	int age, marks; 
+	char name[20]; 
+};
+
+
+int comparator(const void *p, const void *q) 
+{ 
+	int l = ((struct Student *)p)->marks; 
+	int r = ((struct Student *)q)->marks; 
+	return (l - r); 
+} 
+
+
+/* little bit about structure*/
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct stud{
+        int marks;
+        char name[10];
+    }s;
+    
+    
+int main(){
+    s stud[10];
+    s *p; p=stud;
+    for(int i=0;i<10;i++){
+        *(p+i).marks=i+50;
+        printf("%d ",*(p+i).marks);
+    }
+    
+    
+    return 0;
+}
+
+main.c: In function ‘main’:
+main.c:14:15: error: request for member ‘marks’ in something not a structure or union
+         *(p+i).marks=i+50;
+               ^
+main.c:15:28: error: request for member ‘marks’ in something not a structure or union
+         printf("%d ",*(p+i).marks);
+                            ^
+/*this one works*/
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct stud{
+        int marks;
+        char name[10];
+    }s;
+    
+    
+int main(){
+    s stud[10];
+    s *p; p=stud;
+    for(int i=0;i<10;i++){
+        p[i].marks=i+50;
+        printf("%d ",p[i].marks);
+    }
+    
+    
+    return 0;
+}
+                            
+/* this one works as well*/
+#include<stdio.h>
+#include<stdlib.h>
+
+typedef struct stud{
+        int marks;
+        char name[10];
+    }s;
+    
+    
+int main(){
+    s stud[10];
+    s *p; p=stud;
+    for(int i=0;i<10;i++){
+        (p+i)->marks=i+50;
+        printf("%d ",(p+i)->marks);
+    }
+    
+    
+    return 0;
+}
+                            
+
